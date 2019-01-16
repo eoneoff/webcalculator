@@ -39,10 +39,18 @@ textarea {
   font-family: 'Orbitron', sans-serif;
   font-size: 20px; }
 
+.history {
+  max-height: 10em;
+  overflow-y: auto; }
+
+.error {
+  color: red; }
+
 .button-panel {
   margin: 15px 5px;
   padding: 10px;
-  background-color: #144A29; }
+  background-color: #144A29;
+  border-radius: 5px; }
 
 .btn-calc {
   width: 45px;

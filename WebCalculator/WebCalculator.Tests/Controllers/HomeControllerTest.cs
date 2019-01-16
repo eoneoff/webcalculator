@@ -6,6 +6,9 @@ using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WebCalculator;
 using WebCalculator.Controllers;
+using Moq;
+using ICalculatorRepository;
+using System.Threading.Tasks;
 
 namespace WebCalculator.Tests.Controllers
 {
@@ -16,10 +19,13 @@ namespace WebCalculator.Tests.Controllers
         public void Index()
         {
             // Arrange
-            HomeController controller = new HomeController();
+            var moq = new Mock<ICalculatorRepository.ICalculatorRepository>();
+            moq.Setup(m => m.GetOperations(It.IsAny<string>())).Returns
+                (Task.FromResult(default(IEnumerable<string>)));
+            HomeController controller = new HomeController(moq.Object);
 
             // Act
-            ViewResult result = controller.Index() as ViewResult;
+            ViewResult result = controller.Index().Result as ViewResult;
 
             // Assert
             Assert.IsNotNull(result);

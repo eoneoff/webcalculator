@@ -1,55 +1,51 @@
-﻿@using Resources
+﻿@model IEnumerable<string>
+@using Resources
 
 @{
     ViewBag.Title = Resources.Calculator;
 }
 <div class="d-flex flex-column align-items-stretch">
     <div class="screen d-flex flex-column align-items-end">
-        <div data-bind="foreach:history">
-            <div class="d-flex flex-row justify-content-end" data-bind="foreach:$data">
-                <span data-bind="text:$data"></span>
-            </div>
-        </div>
-        <div data-bind="foreach:operation">
-            <span data-bind="text:$data"></span>
+        <div class="d-flex flex-column align-items-end history" data-bind="foreach:history">
+           <div data-bind="text:$data, click:()=>$root.showFromHistory($data)"></div>
         </div>
         <div class="separator align-self-stretch"></div>
-        <div class="d-flex flex-row">
-            <div></div>
-            <div class="ml-auto" data-bind="text:screen"></div>
+        <div class="d-flex flex-row align-self-stretch">
+            <div class="mr-auto error" data-bind="if:error">E</div>
+            <div data-bind="text:screen"></div>
         </div>
     </div>
     <div class="d-flex flex-row justify-content-end">
         <div class="button-panel">
             <div class="d-flex flex-row">
-                <button class="btn btn-danger btn-calc m-2" data-bind="click:model.clearClick">C</button>
-                <button class="btn btn-warning btn-calc m-2" data-bind="click:model.deleteClick"><i class="fas fa-arrow-left"></i></button>
-                <button class="btn btn-success btn-calc m-2"><i class="fas fa-percent"></i></button>
-                <button class="btn btn-success btn-calc m-2" data-bind="click:()=>model.operationClick('/')"><i class="fas fa-divide"></i></button>
+                <button class="btn btn-danger btn-calc m-2" data-bind="click:$root.clearClick">C</button>
+                <button class="btn btn-info btn-calc m-2" data-bind="click:$root.numberClick">(</button>
+                <button class="btn btn-info btn-calc m-2" data-bind="click:$root.numberClick">)</button>
+                <button class="btn btn-success btn-calc m-2" data-bind="click:()=>$root.operationClick('/')"><i class="fas fa-divide"></i></button>
             </div>
             <div class="d-flex flex-row">
-                <button class="btn btn-primary btn-calc m-2" data-bind="click:model.numberClick">7</button>
-                <button class="btn btn-primary btn-calc m-2" data-bind="click:model.numberClick">8</button>
-                <button class="btn btn-primary btn-calc m-2" data-bind="click:model.numberClick">9</button>
-                <button class="btn btn-success btn-calc m-2" data-bind="click:()=>model.operationClick('*')"><i class="fas fa-times"></i></button>
+                <button class="btn btn-primary btn-calc m-2" data-bind="click:$root.numberClick">7</button>
+                <button class="btn btn-primary btn-calc m-2" data-bind="click:$root.numberClick">8</button>
+                <button class="btn btn-primary btn-calc m-2" data-bind="click:$root.numberClick">9</button>
+                <button class="btn btn-success btn-calc m-2" data-bind="click:()=>$root.operationClick('*')"><i class="fas fa-times"></i></button>
             </div>
             <div class="d-flex flex-row">
-                <button class="btn btn-primary btn-calc m-2" data-bind="click:model.numberClick">4</button>
-                <button class="btn btn-primary btn-calc m-2" data-bind="click:model.numberClick">5</button>
-                <button class="btn btn-primary btn-calc m-2" data-bind="click:model.numberClick">6</button>
-                <button class="btn btn-success btn-calc m-2" data-bind="click:()=>model.operationClick('-')"><i class="fas fa-minus"></i></button>
+                <button class="btn btn-primary btn-calc m-2" data-bind="click:$root.numberClick">4</button>
+                <button class="btn btn-primary btn-calc m-2" data-bind="click:$root.numberClick">5</button>
+                <button class="btn btn-primary btn-calc m-2" data-bind="click:$root.numberClick">6</button>
+                <button class="btn btn-success btn-calc m-2" data-bind="click:()=>$root.operationClick('-')"><i class="fas fa-minus"></i></button>
             </div>
             <div class="d-flex flex-row">
-                <button class="btn btn-primary btn-calc m-2" data-bind="click:model.numberClick">1</button>
-                <button class="btn btn-primary btn-calc m-2" data-bind="click:model.numberClick">2</button>
-                <button class="btn btn-primary btn-calc m-2" data-bind="click:model.numberClick">3</button>
-                <button class="btn btn-success btn-calc m-2" data-bind="click:()=>model.operationClick('+')"><i class="fas fa-plus"></i></button>
+                <button class="btn btn-primary btn-calc m-2" data-bind="click:$root.numberClick">1</button>
+                <button class="btn btn-primary btn-calc m-2" data-bind="click:$root.numberClick">2</button>
+                <button class="btn btn-primary btn-calc m-2" data-bind="click:$root.numberClick">3</button>
+                <button class="btn btn-success btn-calc m-2" data-bind="click:()=>$root.operationClick('+')"><i class="fas fa-plus"></i></button>
             </div>
             <div class="d-flex flex-row">
-                <button class="btn btn-info btn-calc m-2">( )</button>
-                <button class="btn btn-primary btn-calc m-2" data-bind="click:model.numberClick">0</button>
-                <button class="btn btn-primary btn-calc m-2" data-bind="click:model.dotClick">.</button>
-                <button class="btn btn-warning btn-calc m-2" data-bind="click:model.operationEquals"><i class="fas fa-equals"></i></button>
+                <button class="btn btn-primary btn-calc m-2" data-bind="click:$root.dotClick">.</button>
+                <button class="btn btn-primary btn-calc m-2" data-bind="click:$root.numberClick">0</button>
+                <button class="btn btn-warning btn-calc m-2" data-bind="click:$root.deleteClick"><i class="fas fa-arrow-left"></i></button>
+                <button class="btn btn-warning btn-calc m-2" data-bind="click:$root.operationEquals"><i class="fas fa-equals"></i></button>
             </div>
         </div>
     </div>
@@ -58,7 +54,7 @@
 @section scripts{
     @Scripts.Render("~/bundles/script")
     <script>
-        var model = new Model();
+        var model = new Model(@Model);
         ko.applyBindings(model);
     </script>  
 }

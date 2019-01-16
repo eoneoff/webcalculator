@@ -18,6 +18,8 @@ namespace WebCalculator
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            UnityMvcActivator.Start();
+            UnityConfig.RegisterTypes(UnityConfig.Container);
         }
     }
 }

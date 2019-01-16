@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -8,9 +9,16 @@ namespace WebCalculator.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        ICalculatorRepository.ICalculatorRepository _repository;
+
+        public HomeController(ICalculatorRepository.ICalculatorRepository repository)
         {
-            return View();
+            _repository = repository;
+        }
+
+        public async Task<ActionResult> Index()
+        {
+            return View(await _repository.GetOperations(Request?.UserHostAddress));
         }
     }
 }
