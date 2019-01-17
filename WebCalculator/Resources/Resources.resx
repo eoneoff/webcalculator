@@ -120,4 +120,19 @@
   <data name="Calculator" xml:space="preserve">
     <value>Калькулятор</value>
   </data>
+  <data name="ContinueOffline" xml:space="preserve">
+    <value>Продолжить в оффлайн-режиме</value>
+  </data>
+  <data name="ErrorTookPlace" xml:space="preserve">
+    <value>При сохранении истории произошла ошибка</value>
+  </data>
+  <data name="HistorySaveError" xml:space="preserve">
+    <value>Ошибка сохранения истории</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Нет</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Да</value>
+  </data>
 </root>

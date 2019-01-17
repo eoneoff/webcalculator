@@ -51,11 +51,35 @@
     </div>
 </div>
 
-@section scripts{
+@section scripts
+{
     @Scripts.Render("~/bundles/script")
     <script>
         var model = new Model(@Html.Raw(string.Format("[{0}]", string.Join(", ", Model.Select(rec => $"'{rec}'")))), '@Url.Action("PostRecord")');
         ko.applyBindings(model);
     </script>  
+}
+
+@section modals
+{
+     <div class="modal" tabindex="-1" role="dialog" id="saveError">
+         <div class="modal-dialog" role="document">
+             <div class="modal-content">
+                 <div class="modal-header">
+                     <h5 class="modal-title">@Resources.HistorySaveError</h5>
+                     <button type="button" class="close" data-dismiss="modal">
+                         <i class="fas fa-times"></i>
+                     </button>
+                 </div>
+                 <div class="modal-body">
+                     <p>@Resources.ErrorTookPlace <span data-bind="text:saveError"></span> @Resources.ContinueOffline?</p>
+                 </div>
+                 <div class="modal-footer justify-content-between">
+                     <button type="button" class="btn btn-primary" data-dismiss="modal" data-bind="click:$root.setOfflineMode">@Resources.Yes</button>
+                     <button type="button" class="btn btn-danger" data-dismiss="modal">@Resources.No</button>
+                 </div>
+             </div>
+         </div>
+     </div>
 }
 

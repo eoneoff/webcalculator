@@ -68,5 +68,50 @@ namespace Resources {
                 return ResourceManager.GetString("Calculator", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Продолжить в оффлайн-режиме.
+        /// </summary>
+        public static string ContinueOffline {
+            get {
+                return ResourceManager.GetString("ContinueOffline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to При сохранении истории произошла ошибка.
+        /// </summary>
+        public static string ErrorTookPlace {
+            get {
+                return ResourceManager.GetString("ErrorTookPlace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ошибка сохранения истории.
+        /// </summary>
+        public static string HistorySaveError {
+            get {
+                return ResourceManager.GetString("HistorySaveError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Нет.
+        /// </summary>
+        public static string No {
+            get {
+                return ResourceManager.GetString("No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Да.
+        /// </summary>
+        public static string Yes {
+            get {
+                return ResourceManager.GetString("Yes", resourceCulture);
+            }
+        }
     }
 }

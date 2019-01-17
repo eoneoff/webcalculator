@@ -34,7 +34,7 @@ namespace WebCalculator.Controllers
             }
             catch(Exception e)
             {
-                return Json($"{{\"Success\": \"false\", \"Error\":\"{e.Message}\"}}");
+                return Json($"{{\"Success\": \"false\", \"Error\":\"{e.Message.Replace("\"","'")}\"}}");
             }
 
             return Json("{\"Success\": \"true\"}");

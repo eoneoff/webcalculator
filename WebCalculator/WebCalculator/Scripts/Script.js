@@ -4,6 +4,8 @@
         this.history = ko.observableArray(records);
         this.error = ko.observable(false);
         this.postUrl = postUrl;
+        this.saveError = ko.observable();
+        this.offline = false;
     }
 
     numberClick(data, event) {
@@ -51,15 +53,16 @@
             let expression = `${this.screen()}=${result}`;
             this.history.push(expression);
             this.screen(result);
-            $.post(this.postUrl, { record: expression },
-                (data) =>
-                {
-                    alert(data);
-                    let result = $.parseJSON(data);
-                    if (result.Sucess == 'false') {
-                        alert('error');
-                    }
-                });
+            if (!this.offline) {
+                $.post(this.postUrl, { record: expression },
+                    (data) => {
+                        let result = $.parseJSON(data);
+                        if (result.Success == 'false') {
+                            this.saveError(result.Error);
+                            $('#saveError').modal('show');
+                        }
+                    });
+            }
         } catch (e) {
             this.error(true);
         }
@@ -68,5 +71,9 @@
     showFromHistory(data) {
         let eq = data.slice(0, data.indexOf('='));
         this.screen(eq);
+    }
+
+    setOfflineMode() {
+        this.offline = true;
     }
 }
