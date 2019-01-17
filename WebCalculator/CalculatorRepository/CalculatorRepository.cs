@@ -18,7 +18,7 @@ namespace CalculatorRepository
         {
             return await db.Operations.Where(o => o.UserId == 
                 db.Users.FirstOrDefault(u=>u.Ip == ip).Id &&
-                o.TimeOfOperation > DateTime.Now.AddDays(-1))
+                o.TimeOfOperation > DbFunctions.AddDays(DateTime.Now, -1))
                 .Select(o => o.Expresssion).ToListAsync();
         }
 

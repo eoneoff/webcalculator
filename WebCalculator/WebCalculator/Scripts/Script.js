@@ -1,8 +1,9 @@
 ﻿class Model {
-    constructor(records) {
+    constructor(records, postUrl) {
         this.screen = ko.observable('0');
         this.history = ko.observableArray(records);
         this.error = ko.observable(false);
+        this.postUrl = postUrl;
     }
 
     numberClick(data, event) {
@@ -47,8 +48,18 @@
             if (result == Infinity || isNaN(result)) {
                 throw 'error';
             }
-            this.history.push(`${this.screen()}=${result}`);
+            let expression = `${this.screen()}=${result}`;
+            this.history.push(expression);
             this.screen(result);
+            $.post(this.postUrl, { record: expression },
+                (data) =>
+                {
+                    alert(data);
+                    let result = $.parseJSON(data);
+                    if (result.Sucess == 'false') {
+                        alert('error');
+                    }
+                });
         } catch (e) {
             this.error(true);
         }

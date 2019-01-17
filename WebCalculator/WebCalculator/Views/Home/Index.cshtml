@@ -54,7 +54,7 @@
 @section scripts{
     @Scripts.Render("~/bundles/script")
     <script>
-        var model = new Model(@Model);
+        var model = new Model(@Html.Raw(string.Format("[{0}]", string.Join(", ", Model.Select(rec => $"'{rec}'")))), '@Url.Action("PostRecord")');
         ko.applyBindings(model);
     </script>  
 }
