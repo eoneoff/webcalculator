@@ -14,6 +14,15 @@ namespace DbConnection
         {
             Database.SetInitializer(
                 new CreateDatabaseIfNotExists<CalculatorDbContext>());
+
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>().HasIndex(u=>u.Ip);
+            modelBuilder.Entity<Operation>().HasIndex(o => o.UserId);
+            modelBuilder.Entity<Operation>().HasIndex(o => o.TimeOfOperation);
+            base.OnModelCreating(modelBuilder);
         }
 
         public DbSet<User> Users { get; set; }
