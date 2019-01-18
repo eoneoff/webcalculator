@@ -285,7 +285,9 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -337,6 +339,10 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AdoCalculatorRepository\AdoCalculatorRepository.csproj">
+      <Project>{9774730b-2ba2-40a4-9e7f-636e9ed2c35d}</Project>
+      <Name>AdoCalculatorRepository</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CalculatorRepository\CalculatorRepository.csproj">
       <Project>{10397513-EAEB-4F00-94BC-1996B667139F}</Project>
       <Name>CalculatorRepository</Name>

@@ -41,7 +41,7 @@ namespace WebCalculator
             // NOTE: To load from web.config uncomment the line below.
             // Make sure to add a Unity.Configuration to the using statements.
             // container.LoadConfiguration();
-            container.RegisterType<ICalculatorRepository.ICalculatorRepository, CalculatorRepository.CalculatorRepository>();
+            container.RegisterType<ICalculatorRepository.ICalculatorRepository, AdoCalculatorRepository.CalculatorRepository>();
             // TODO: Register your type's mappings here.
             // container.RegisterType<IProductRepository, ProductRepository>();
         }

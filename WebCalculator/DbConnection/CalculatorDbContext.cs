@@ -10,7 +10,7 @@ namespace DbConnection
 {
     public class CalculatorDbContext : DbContext
     {
-        public CalculatorDbContext():base("CalculatorDb")
+        public CalculatorDbContext():base("CalculatorHistoryDb")
         {
             Database.SetInitializer(
                 new CreateDatabaseIfNotExists<CalculatorDbContext>());

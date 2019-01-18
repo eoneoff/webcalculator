@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculatorRepository", "CalculatorRepository\CalculatorRepository.csproj", "{10397513-EAEB-4F00-94BC-1996B667139F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdoCalculatorRepository", "AdoCalculatorRepository\AdoCalculatorRepository.csproj", "{9774730B-2BA2-40A4-9E7F-636E9ED2C35D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{10397513-EAEB-4F00-94BC-1996B667139F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10397513-EAEB-4F00-94BC-1996B667139F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10397513-EAEB-4F00-94BC-1996B667139F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9774730B-2BA2-40A4-9E7F-636E9ED2C35D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9774730B-2BA2-40A4-9E7F-636E9ED2C35D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9774730B-2BA2-40A4-9E7F-636E9ED2C35D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9774730B-2BA2-40A4-9E7F-636E9ED2C35D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
