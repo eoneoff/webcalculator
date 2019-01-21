@@ -52,7 +52,7 @@
             }
             let expression = `${this.screen()}=${result}`;
             this.history.push(expression);
-            this.screen(result);
+            this.screen(result.toString());
             if (!this.offline) {
                 $.post(this.postUrl, { record: expression },
                     (data) => {

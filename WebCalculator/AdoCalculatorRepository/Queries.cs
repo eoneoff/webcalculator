@@ -9,11 +9,11 @@ namespace AdoCalculatorRepository
     public class Queries
     {
         protected readonly string loadHistoryQuery = @"SELECT Expression FROM Operations AS O
-                                    INNER JOIN Users AS U
-                                    ON O.UserId = U.Id
-                                    WHERE U.Ip = @ip
-                                    AND O.TimeOfOperation > DATEADD(day, -1, GETDATE())
-                                    ORDER BY O.TimeOfOperation";
+                                                    INNER JOIN Users AS U
+                                                    ON O.UserId = U.Id
+                                                    WHERE U.Ip = @ip
+                                                    AND O.TimeOfOperation > DATEADD(day, -1, GETDATE())
+                                                    ORDER BY O.TimeOfOperation";
 
         protected readonly string saveRecord = "save_operation";
 
